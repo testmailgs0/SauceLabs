@@ -1,7 +1,6 @@
 Feature: Checkout Page Scenarios
 
   Background:
-    * configure driver = { type: 'chrome',showDriverLog: true }
     * def SeleniumHelper = Java.type('SauceLabs.TestHelper.SeleniumHelper')
 
   @EnterUserInformation

@@ -9,9 +9,10 @@ Feature: Sauce Demo Work Flow Scenrios
   # * configure driver = { type: 'safaridriver', showDriverLog: true }
   # * configure driver = { type: 'iedriver', showDriverLog: true, httpConfig: { readTimeout: 120000 } }
 
-  Scenario: Logging to UI & Adding product to cart and view
+  Scenario: Logging to UI & Adding product to cart and placing order.
     Given driver 'https://www.saucedemo.com'
-    * call read('../TestModules/HomePage.feature') { driver: '#(driver)' }
+    And fullscreen()
+    * call read('../TestModules/HomePage.feature@LoginToUI') { driver: '#(driver)' }
     * call read('../TestModules/Product.feature@AddProductToCart') {driver: '#(driver)'}
     * call read('../TestModules/Product.feature@ViewCart') {driver: '#(driver)'}
     * call read('../TestModules/Cart.feature@VerifyQuantity') {driver: '#(driver)'}

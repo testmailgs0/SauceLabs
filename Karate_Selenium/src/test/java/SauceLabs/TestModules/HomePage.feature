@@ -1,8 +1,8 @@
 Feature: Logging in to sauce demo website
 
   Background:
-    * configure driver = { type: 'chrome',showDriverLog: true }
 
+    @LoginToUI
   Scenario: Logging in to Sauce demo website with standard user
     Given driver 'https://www.saucedemo.com/'
     And input("//input[@id='user-name']",'standard_user')

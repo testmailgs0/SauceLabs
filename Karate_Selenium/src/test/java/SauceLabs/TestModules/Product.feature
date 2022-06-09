@@ -1,15 +1,16 @@
 Feature: Product Page Scenarios
 
   Background:
-    * configure driver = { type: 'chrome',showDriverLog: true }
     * def SeleniumHelper = Java.type('SauceLabs.TestHelper.SeleniumHelper')
 
+  @SortHighToLow
   Scenario: Sorting products from highest to lowest
     Given driver 'https://www.saucedemo.com/inventory.html'
     When click("//button[@id='react-burger-menu-btn']")
     And select("//select", 'Price (high to low)')
     Then match driver.url == 'https://www.saucedemo.com/inventory.html'
 
+  @SortLowToHigh
   Scenario: Sorting products from lowest to highest
     Given driver 'https://www.saucedemo.com/inventory.html'
     When click("//button[@id='react-burger-menu-btn']")
