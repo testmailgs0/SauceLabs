@@ -1,6 +1,7 @@
-package SauceLabs.TestHelper;
+package SourceCode.TestHelper;
 
 import com.intuit.karate.driver.chrome.Chrome;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,5 +57,4 @@ public class SeleniumHelper {
             return false;
         }
     }
-
 }

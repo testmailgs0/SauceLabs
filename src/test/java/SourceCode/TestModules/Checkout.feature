@@ -1,7 +1,7 @@
 Feature: Checkout Page Scenarios
 
   Background:
-    * def SeleniumHelper = Java.type('SauceLabs.TestHelper.SeleniumHelper')
+    * def SeleniumHelper = Java.type('SourceCode.TestHelper.SeleniumHelper')
 
   @EnterUserInformation
   Scenario: Entering User Information

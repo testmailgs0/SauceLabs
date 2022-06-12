@@ -1,3 +1,4 @@
+@TestExecutor
 Feature: Sauce Demo Work Flow Scenrios
 
   Background:
