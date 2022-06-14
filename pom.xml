@@ -1,28 +1,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
- 
-    <groupId>org.example</groupId>
+
+    <groupId>Test.Automation</groupId>
     <artifactId>SauceLabs</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
- 
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>        
+        <maven.surefire.version>2.22.2</maven.surefire.version>
         <karate.version>1.2.0</karate.version>
         <selenium.version>4.2.1</selenium.version>
-    </properties>    
-
-    <dependencies>         
-        <dependency>
-            <groupId>com.intuit.karate</groupId>
-            <artifactId>karate-junit5</artifactId>
-            <version>${karate.version}</version>
+    </properties>
+    <dependencies>
+        <!-- <dependency>
+             <groupId>com.intuit.karate</groupId>
+             <artifactId>karate-junit5</artifactId>
+             <version>${karate.version}</version>
+             <scope>test</scope>
+         </dependency>-->
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+       <!-- <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
+-->
+        <!-- https://mvnrepository.com/artifact/com.intuit.karate/karate-junit4 -->
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-junit4</artifactId>
+            <version>1.2.1.RC2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
@@ -33,7 +48,13 @@
             <groupId>com.intuit.karate</groupId>
             <artifactId>karate-core</artifactId>
             <version>${karate.version}</version>
-            <!-- <version>0.9.6.RC2</version>-->
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.3.4</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -41,7 +62,6 @@
             <version>${selenium.version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <testResources>
             <testResource>
@@ -66,11 +86,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
-                <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                </configuration>
-            </plugin>          
-        </plugins>        
+                <version>2.22.2</version>
+            </plugin>
+        </plugins>
     </build>
 </project>
