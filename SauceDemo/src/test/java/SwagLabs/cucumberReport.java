@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -26,14 +27,13 @@ import static org.junit.Assert.assertEquals;
         monochrome = true)
 public class cucumberReport {
     @Test
-    public void testParallel() {
-        //String karateOutputPath = "target/surefire-reports";
+    public void testParallel() throws IOException {
         Results results = Runner.path("classpath:SwagLabs").outputCucumberJson(true).tags("@TestExecutor").parallel(0);
         generateReport(results.getReportDir());
         assertEquals(results.getErrorMessages(), 0, results.getFailCount());
     }
 
-    public static void generateReport(String karateOutputPath) {
+    public static void generateReport(String karateOutputPath) throws IOException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
         LocalDateTime now = LocalDateTime.now();
         String currentDateTime = dtf.format(now);
@@ -43,6 +43,7 @@ public class cucumberReport {
         String currentDir = System.getProperty("user.dir");
         String folderPath= currentDir + "\\Reports\\ " + "TestCaseExecution_ " +currentDateTime;
         File file = new File (folderPath);
+        FileUtils.cleanDirectory(new File(currentDir + "\\Reports\\" ));
         file.mkdirs();
         Configuration config = new Configuration( file, "SwagLabs");
         ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);

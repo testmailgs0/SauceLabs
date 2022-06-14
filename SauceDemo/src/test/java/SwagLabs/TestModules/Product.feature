@@ -1,7 +1,7 @@
 Feature: Product Page Scenarios
 
   Background:
-    * def SeleniumHelper = Java.type('SourceCode.TestHelper.SeleniumHelper')
+    * def SeleniumHelper = Java.type('SwagLabs.TestHelper.SeleniumHelper')
 
   @SortHighToLow
   Scenario: Sorting products from highest to lowest

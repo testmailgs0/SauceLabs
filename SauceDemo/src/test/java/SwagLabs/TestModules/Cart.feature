@@ -1,7 +1,7 @@
 Feature: Cart Page Scenarios
 
   Background:
-    * def SeleniumHelper = Java.type('SourceCode.TestHelper.SeleniumHelper')
+    * def SeleniumHelper = Java.type('SwagLabs.TestHelper.SeleniumHelper')
 
   @RemoveProductFromCart
   Scenario: Removing Product From Cart
