@@ -19,11 +19,10 @@ import static org.junit.Assert.assertEquals;
 
 
 /**
- *
  * @author Deepak
  */
-@CucumberOptions(features = {"classpath:SwagLabs" },
-        tags = {"@TestExecutor"},plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json" },
+@CucumberOptions(features = {"classpath:SwagLabs"},
+        tags = {"@TestExecutor"}, plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"},
         monochrome = true)
 public class cucumberReport {
     @Test
@@ -37,15 +36,17 @@ public class cucumberReport {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
         LocalDateTime now = LocalDateTime.now();
         String currentDateTime = dtf.format(now);
-        Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] {"json"}, true);
+        Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[]{"json"}, true);
         ArrayList jsonPaths = new ArrayList(jsonFiles.size());
         jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
         String currentDir = System.getProperty("user.dir");
-        String folderPath= currentDir + "\\Reports\\ " + "TestCaseExecution_ " +currentDateTime;
-        File file = new File (folderPath);
-        FileUtils.cleanDirectory(new File(currentDir + "\\Reports\\" ));
+        String folderPath = currentDir + "\\Reports\\ " + "TestCaseExecution_ " + currentDateTime;
+        File file = new File(folderPath);
+        if (new File(currentDir + "\\Reports\\").exists()) {
+            FileUtils.cleanDirectory(new File(currentDir + "\\Reports\\"));
+        }
         file.mkdirs();
-        Configuration config = new Configuration( file, "SwagLabs");
+        Configuration config = new Configuration(file, "SwagLabs");
         ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
         reportBuilder.generateReports();
     }
