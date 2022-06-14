@@ -1,4 +1,4 @@
-package SourceCode.TestHelper;
+package SwagLabs.TestHelper;
 
 import com.intuit.karate.driver.chrome.Chrome;
 

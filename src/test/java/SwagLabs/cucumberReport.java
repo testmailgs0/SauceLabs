@@ -1,15 +1,12 @@
-package SourceCode;
+package SwagLabs;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
-import com.intuit.karate.junit4.Karate;
 import cucumber.api.CucumberOptions;
-import io.cucumber.junit.Cucumber;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -24,14 +21,14 @@ import static org.junit.Assert.assertEquals;
  *
  * @author Deepak
  */
-@CucumberOptions(features = {"classpath:SourceCode" },
+@CucumberOptions(features = {"classpath:SwagLabs" },
         tags = {"@TestExecutor"},plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json" },
         monochrome = true)
 public class cucumberReport {
     @Test
     public void testParallel() {
         //String karateOutputPath = "target/surefire-reports";
-        Results results = Runner.path("classpath:SourceCode").outputCucumberJson(true).tags("@TestExecutor").parallel(0);
+        Results results = Runner.path("classpath:SwagLabs").outputCucumberJson(true).tags("@TestExecutor").parallel(0);
         generateReport(results.getReportDir());
         assertEquals(results.getErrorMessages(), 0, results.getFailCount());
     }
@@ -47,7 +44,7 @@ public class cucumberReport {
         String folderPath= currentDir + "\\Reports\\ " + "TestCaseExecution_ " +currentDateTime;
         File file = new File (folderPath);
         file.mkdirs();
-        Configuration config = new Configuration( file, "SauceLabs");
+        Configuration config = new Configuration( file, "SwagLabs");
         ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
         reportBuilder.generateReports();
     }
