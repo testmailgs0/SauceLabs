@@ -40,7 +40,7 @@ public class cucumberReport {
         ArrayList jsonPaths = new ArrayList(jsonFiles.size());
         jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
         String currentDir = System.getProperty("user.dir");
-        String folderPath = currentDir + "\\Reports\\ " + "TestCaseExecution_ " + currentDateTime;
+        String folderPath = currentDir + "\\Reports\\ " + "TestCaseExecution";
         File file = new File(folderPath);
         if (new File(currentDir + "\\Reports\\").exists()) {
             FileUtils.cleanDirectory(new File(currentDir + "\\Reports\\"));
