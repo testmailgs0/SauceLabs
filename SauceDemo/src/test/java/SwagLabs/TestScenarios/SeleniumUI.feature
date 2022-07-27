@@ -22,3 +22,4 @@ Feature: Sauce Demo Work Flow Scenrios
     * call read('../TestModules/Checkout.feature@EnterUserInformation') {driver: '#(driver)'}
     * call read('../TestModules/Checkout.feature@VerifyPaymentInformation') {driver: '#(driver)'}
     * call read('../TestModules/Checkout.feature@PlaceOrder') {driver: '#(driver)'}
+    * call read('../TestModules/WebTable.feature@ValidatingWebTableFromExcel') {driver: '#(driver)'}
