@@ -1,9 +1,20 @@
 package SwagLabs.TestHelper;
 
 import com.intuit.karate.driver.chrome.Chrome;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class SeleniumHelper {
@@ -57,4 +68,43 @@ public class SeleniumHelper {
             return false;
         }
     }
+
+    /**
+     * @param driver
+     * @param TableXpath
+     * @return
+     * @throws IOException
+     * @author
+     */
+    public static HashMap<String, ArrayList<String>> fnGetDataFromWebTable(Chrome driver,String Url, String TableXpath,String THeaders,String Trows,String Tcell) throws IOException {
+        String html = driver.locate(TableXpath).getHtml();
+        ArrayList<String> colsArray = new ArrayList<>();
+        HashMap<Element, ArrayList<String>> dict = new HashMap<>();
+        HashMap<String, ArrayList<String>> tableData = new HashMap<>();
+        Document document = Jsoup.connect(Url).get();
+        Elements table = document.select(TableXpath);
+        Elements subHeaders = table.select(THeaders);
+        Elements rows = table.select(Trows);
+        for (Element row : rows) {
+            Elements list = row.select(Tcell);
+            ArrayList<String> newList = new ArrayList<>();
+            for (Element str : list) {
+                newList.add(str.text());
+            }
+            dict.put(row, newList);
+        }
+        for (Map.Entry<Element, ArrayList<String>> data : dict.entrySet()) {
+            for (int i = 0; i < data.getValue().size(); i++) {
+                if (!tableData.containsKey(subHeaders.get(i).text())) {
+                    ArrayList<String> tempList = new ArrayList<>();
+                    tempList.add(data.getValue().get(i));
+                    tableData.put(subHeaders.get(i).text(), tempList);
+                } else {
+                    tableData.get(subHeaders.get(i).text()).add(data.getValue().get(i));
+                }
+            }
+        }
+        return tableData;
+    }
 }
+
