@@ -2,11 +2,11 @@
 Feature: Sauce Demo Work Flow Scenrios
 
   Background:
-    * configure driver = { type: 'chrome',showDriverLog: true }
+    * configure driver = { type: 'chrome',showDriverLog: true,addOptions: ['--ignore-certificate-errors'] }
   # * configure driverTarget = { docker: 'justinribeiro/chrome-headless', showDriverLog: true }
   # * configure driverTarget = { docker: 'ptrthomas/karate-chrome', showDriverLog: true }
   # * configure driver = { type: 'chromedriver', showDriverLog: true }
-  # * configure driver = { type: 'geckodriver', showDriverLog: true }
+   #* configure driver = { type: 'geckodriver', showDriverLog: true }
   # * configure driver = { type: 'safaridriver', showDriverLog: true }
   # * configure driver = { type: 'iedriver', showDriverLog: true, httpConfig: { readTimeout: 120000 } }
 
